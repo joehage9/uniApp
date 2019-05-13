@@ -18,6 +18,10 @@ const routes: Routes = [
   {
     path: 'add-student',
     loadChildren: './add-student/add-student.module#AddStudentPageModule'
+  },
+  {
+    path: 'view-students',
+    loadChildren: './view-students/view-students.module#ViewStudentsPageModule'
   }
 ];
 

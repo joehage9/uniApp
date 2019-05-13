@@ -24,6 +24,11 @@ export class AppComponent {
       title: 'Add Student',
       url: '/add-student',
       icon: 'person-add'
+    },
+    {
+      title: 'View Students',
+      url: '/view-students',
+      icon: 'person'
     }
   ];
 
@@ -39,6 +44,7 @@ export class AppComponent {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      this.statusBar.hide();
     });
   }
 }

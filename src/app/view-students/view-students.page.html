@@ -1,0 +1,14 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>viewStudents</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let item of obj">
+    <ion-item>
+        {{item.firstName}}
+    </ion-item>
+
+  </ion-card>
+</ion-content>
