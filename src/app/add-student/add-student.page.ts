@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HTTP } from '@ionic-native/http/ngx';
-import { isNull } from '@angular/compiler/src/output/output_ast';
 import { isNullOrUndefined } from 'util';
-import { concat } from 'rxjs';
-import { IonDatetime } from '@ionic/angular';
 
 @Component({
   selector: 'app-add-student',
@@ -81,7 +78,7 @@ export class AddStudentPage implements OnInit {
       ss.email.toLowerCase();
 
      
-      this.http.post('http://192.168.0.100:9100/api/values', ss, {}).then(data => {
+      this.http.post('http://192.168.0.100:9100/api/StudentsValues', ss, {}).then(data => {
         alert(ss.firstName + " " + ss.lastName + " " + ss.fatherName + " " + ss.username + " " + ss.password + " " + ss.passwordHash + " " + ss.address + " " + ss.mobileNumber + " " + ss.email + " " + ss.enrollmentDate);
         this.student = {
           firstName: null,
@@ -96,10 +93,12 @@ export class AddStudentPage implements OnInit {
           enrollmentDate: null
         };
         alert("Student added successfully.");
+
       }).catch(error => {
         alert(ss);
         alert("There was an error, the student wasn't added.");
         console.log(error);
+
       });
 
     }

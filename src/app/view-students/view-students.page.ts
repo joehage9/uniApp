@@ -8,16 +8,14 @@ import { HTTP } from '@ionic-native/http/ngx';
 })
 export class ViewStudentsPage implements OnInit {
   obj: any;
-  constructor(private http: HTTP) 
-  {
+  constructor(private http: HTTP) {
     this.getStudents();
-   }
+  }
 
   getStudents() {
-   
-    this.http.get('http://192.168.0.100:9100/api/values', {}, {}).then(data => {     
+    this.http.get('http://192.168.0.100:9100/api/StudentsValues', {}, {}).then(data => {
       this.obj = JSON.parse(data.data);
-    }).catch(error => {     
+    }).catch(error => {
       console.log(error);
     });
 

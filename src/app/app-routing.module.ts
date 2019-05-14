@@ -23,10 +23,15 @@ const routes: Routes = [
     path: 'view-students',
     loadChildren: './view-students/view-students.module#ViewStudentsPageModule'
   },
-  { 
-    path: 'add-teacher', 
-    loadChildren: './add-teacher/add-teacher.module#AddTeacherPageModule' 
+  {
+    path: 'add-teacher',
+    loadChildren: './add-teacher/add-teacher.module#AddTeacherPageModule'
+  },
+  {
+    path: 'view-teachers',
+    loadChildren: './view-teachers/view-teachers.module#ViewTeachersPageModule'
   }
+
 ];
 
 @NgModule({

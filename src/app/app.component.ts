@@ -34,6 +34,11 @@ export class AppComponent {
       title: 'Add Teacher',
       url: '/add-teacher',
       icon: 'person-add'
+    },
+    {
+      title: 'View Teachers',
+      url: '/view-teachers',
+      icon: 'person'
     }
   ];
 
