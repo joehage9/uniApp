@@ -29,6 +29,11 @@ export class AppComponent {
       title: 'View Students',
       url: '/view-students',
       icon: 'person'
+    },
+    {
+      title: 'Add Teacher',
+      url: '/add-teacher',
+      icon: 'person-add'
     }
   ];
 

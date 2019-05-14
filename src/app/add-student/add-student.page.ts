@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { HTTP } from '@ionic-native/http/ngx';
 import { isNull } from '@angular/compiler/src/output/output_ast';
 import { isNullOrUndefined } from 'util';
+import { concat } from 'rxjs';
+import { IonDatetime } from '@ionic/angular';
 
 @Component({
   selector: 'app-add-student',
@@ -10,6 +12,7 @@ import { isNullOrUndefined } from 'util';
 })
 export class AddStudentPage implements OnInit {
 
+
   student:
     {
       firstName: string,
@@ -17,74 +20,76 @@ export class AddStudentPage implements OnInit {
       fatherName: string,
       username: string,
       password: string,
-      passwordhash: string,
+      passwordHash: string,
       address: string,
       mobileNumber: string,
       email: string,
       enrollmentDate: Date
-    } = {
-      firstName: null,
-      lastName: null,
-      fatherName: null,
-      username: null,
-      password: null,
-      passwordhash: null,
-      address: null,
-      mobileNumber: null,
-      email: null,
-      enrollmentDate: null
-
     };
-  constructor(private http: HTTP) {
 
+  constructor(private http: HTTP) {
+    this.clearInputs();
   }
-  clearInputs() 
-  {  
+
+  clearInputs() {
     this.student =
-    {
-      firstName: null,
-      lastName: null,
-      fatherName: null,
-      username: null,
-      password: null,
-      passwordhash: null,
-      address: null,
-      mobileNumber: null,
-      email: null,
-      enrollmentDate: null
-    }
+      {
+        firstName: null,
+        lastName: null,
+        fatherName: null,
+        username: null,
+        password: null,
+        passwordHash: null,
+        address: null,
+        mobileNumber: null,
+        email: null,
+        enrollmentDate: null
+      }
   }
 
   studentAdd() {
-    if (isNullOrUndefined(this.student.firstName) || isNullOrUndefined(this.student.lastName) || isNullOrUndefined(this.student.fatherName) || isNullOrUndefined(this.student.username) ||
-      isNullOrUndefined(this.student.password) || isNullOrUndefined(this.student.passwordhash) || isNullOrUndefined(this.student.address) || isNullOrUndefined(this.student.mobileNumber) ||
-      isNullOrUndefined(this.student.email) || isNullOrUndefined(this.student.enrollmentDate)) {
-      alert("Please fill all of the inputs.")
+    let ss =
+    {
+      firstName: this.student.firstName,
+      lastName: this.student.lastName,
+      fatherName: this.student.fatherName,
+      username: this.student.username,
+      password: this.student.password,
+      passwordHash: this.student.passwordHash,
+      address: this.student.address,
+      mobileNumber: this.student.mobileNumber,
+      email: this.student.email,
+      enrollmentDate: this.student.enrollmentDate
     }
+
+    if (isNullOrUndefined(ss.firstName)) { alert("firstName is empty") }
+    else if (isNullOrUndefined(ss.lastName)) { alert("lastName is empty") }
+    else if (isNullOrUndefined(ss.fatherName)) { alert("fatherName is empty") }   
+    else if (isNullOrUndefined(ss.username)) { alert("username is empty") }
+    else if (isNullOrUndefined(ss.password)) { alert("password is empty") }
+    else if (isNullOrUndefined(ss.passwordHash)) { alert("passwordhash is empty") }
+    else if (isNullOrUndefined(ss.address)) { alert("address is empty") }
+    else if (isNullOrUndefined(ss.mobileNumber)) { alert("mobileNumber is empty") }
+    else if (isNullOrUndefined(ss.email)) { alert("email is empty") }
+    else if (isNullOrUndefined(ss.enrollmentDate)) { alert("enrollmentDate is empty") }
     else {
-      let ss =
-      {
-        firstName: this.student.firstName.toLocaleLowerCase,
-        lastName: this.student.lastName.toLocaleLowerCase,
-        fatherName: this.student.fatherName.toLocaleLowerCase,
-        username: this.student.username.toLocaleLowerCase,
-        password: this.student.password,
-        passwordhash: this.student.passwordhash,
-        address: this.student.address.toLocaleLowerCase,
-        mobileNumber: this.student.mobileNumber,
-        email: this.student.email.toLocaleLowerCase,
-        enrollmentDate: this.student.enrollmentDate
-      }
-      
+      ss.firstName.toLowerCase();
+      ss.lastName.toLowerCase();
+      ss.fatherName.toLowerCase();
+      ss.username.toLowerCase();
+      ss.address.toLowerCase();
+      ss.email.toLowerCase();
+
+     
       this.http.post('http://192.168.0.100:9100/api/values', ss, {}).then(data => {
-        alert(ss);
+        alert(ss.firstName + " " + ss.lastName + " " + ss.fatherName + " " + ss.username + " " + ss.password + " " + ss.passwordHash + " " + ss.address + " " + ss.mobileNumber + " " + ss.email + " " + ss.enrollmentDate);
         this.student = {
           firstName: null,
           lastName: null,
           fatherName: null,
           username: null,
           password: null,
-          passwordhash: null,
+          passwordHash: null,
           address: null,
           mobileNumber: null,
           email: null,
