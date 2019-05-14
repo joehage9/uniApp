@@ -1,5 +1,5 @@
-button{
-    background-color: #4CAF50;
+.submitButton{
+    background-color: green;
     border: none;
     color: white;
     padding: 15px 32px;
@@ -8,4 +8,19 @@ button{
     display: inline-block;
     font-size: 16px;
     margin: 4px 2px;
+}
+.clearButton{
+    background-color: red;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+}
+
+ion-input:focus-within{
+    border:solid 1px green;
 }

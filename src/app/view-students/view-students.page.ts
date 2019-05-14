@@ -17,8 +17,7 @@ export class ViewStudentsPage implements OnInit {
    
     this.http.get('http://192.168.0.100:9100/api/values', {}, {}).then(data => {     
       this.obj = JSON.parse(data.data);
-    }).catch(error => {
-     
+    }).catch(error => {     
       console.log(error);
     });
 

@@ -24,3 +24,4 @@ const routes: Routes = [
   declarations: [AddStudentPage]
 })
 export class AddStudentPageModule {}
+

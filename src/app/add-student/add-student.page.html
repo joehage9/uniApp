@@ -1,6 +1,11 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Add Student</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Add Student
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -8,46 +13,47 @@
   <form>
     <ion-card>
       <ion-label>First Name</ion-label>
-      <ion-input [(ngModel)]="student.firstName" name="firstName"></ion-input>
+      <ion-input [(ngModel)]="student.firstName" name="firstName" autofocus="true" required maxlength=50></ion-input>
     </ion-card>
     <ion-card>
       <ion-label>Last Name</ion-label>
-      <ion-input [(ngModel)]="student.lastName" name="lastName"></ion-input>
+      <ion-input [(ngModel)]="student.lastName" name="lastName" required maxlength=50></ion-input>
     </ion-card>
     <ion-card>
       <ion-label>Father Name</ion-label>
-      <ion-input [(ngModel)]="student.fatherName" name="fatherName"></ion-input>
+      <ion-input [(ngModel)]="student.fatherName" name="fatherName" required maxlength=50></ion-input>
     </ion-card>
     <ion-card>
       <ion-label>Username</ion-label>
-      <ion-input [(ngModel)]="student.username" name="username"></ion-input>
+      <ion-input [(ngModel)]="student.username" name="username" required maxlength=50></ion-input>
     </ion-card>
     <ion-card>
       <ion-label>Password</ion-label>
-      <ion-input [(ngModel)]="student.password" name="password"></ion-input>
+      <ion-input [(ngModel)]="student.password" name="password" inputmode="password" required maxlength=250></ion-input>
     </ion-card>
      <ion-card>
       <ion-label>Password hash</ion-label>
-      <ion-input [(ngModel)]="student.passwordHash" name="passwordHash"></ion-input>
+      <ion-input [(ngModel)]="student.passwordHash" name="passwordHash" required maxlength=250></ion-input>
     </ion-card>
     <ion-card>
       <ion-label>Address</ion-label>
-      <ion-input [(ngModel)]="student.address" name="address"></ion-input>
+      <ion-input [(ngModel)]="student.address" name="address" required maxlength=50></ion-input>
     </ion-card>
     <ion-card>
       <ion-label>Mobile Number</ion-label>
-      <ion-input [(ngModel)]="student.mobileNumber" name="mobileNumber"></ion-input>
+      <ion-input [(ngModel)]="student.mobileNumber" name="mobileNumber" inputmode="numeric" required maxlength=50></ion-input>
     </ion-card>
     <ion-card>
       <ion-label>Email</ion-label>
-      <ion-input [(ngModel)]="student.email" name="email"></ion-input>
+      <ion-input [(ngModel)]="student.email" name="email" inputmode="email" placeholder="example@example.com" required maxlength=50></ion-input>
     </ion-card>
     <ion-card>
       <ion-label>Enrollment Date</ion-label>
-      <ion-datetime displayFormat="MM/DD/YYYY" pickerFormat="D/M/YYYY" [(ngModel)]="student.enrollmentDate" name="enrollmentDate"></ion-datetime>
+      <ion-datetime displayFormat="MM/DD/YYYY" pickerFormat="D/M/YYYY" [(ngModel)]="student.enrollmentDate" name="enrollmentDate" required maxlength=50></ion-datetime>
     </ion-card>
     
-    <button ion-button type="submit" (click)="studentAdd()">Submit</button>
+    <button ion-button class="submitButton" type="submit" (click)="studentAdd()">Submit</button>
+    <button ion-button class="clearButton" type="reset" (click)="clearInputs()">Clear</button>
   </form>
 
 </ion-content>
