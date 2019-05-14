@@ -30,7 +30,10 @@ const routes: Routes = [
   {
     path: 'view-teachers',
     loadChildren: './view-teachers/view-teachers.module#ViewTeachersPageModule'
-  }
+  },
+  { path: 'add-major', loadChildren: './add-major/add-major.module#AddMajorPageModule' },
+  { path: 'add-course', loadChildren: './add-course/add-course.module#AddCoursePageModule' },
+  { path: 'add-admin', loadChildren: './add-admin/add-admin.module#AddAdminPageModule' }
 
 ];
 
