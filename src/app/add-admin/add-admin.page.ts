@@ -73,7 +73,6 @@ export class AddAdminPage implements OnInit {
         alert("admin added successfully.");
 
       }).catch(error => {
-        alert(ss);
         alert("There was an error, the admin wasn't added.");
         console.log(error);
 

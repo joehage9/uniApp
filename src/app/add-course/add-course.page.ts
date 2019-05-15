@@ -44,11 +44,11 @@ export class AddCoursePage implements OnInit {
       teacherID: this.course.teacherID,
     }
 
-    if (isNullOrUndefined(ss.name)) { alert("firstName is empty") }
-    else if (isNullOrUndefined(ss.description)) { alert("lastName is empty") }
-    else if (isNullOrUndefined(ss.numberOfCredits)) { alert("username is empty") }
-    else if (isNullOrUndefined(ss.majorID)) { alert("password is empty") }
-    else if (isNullOrUndefined(ss.teacherID)) { alert("passwordhash is empty") }
+    if (isNullOrUndefined(ss.name)) { alert("name is empty") }
+    else if (isNullOrUndefined(ss.description)) { alert("description is empty") }
+    else if (isNullOrUndefined(ss.numberOfCredits)) { alert("numberOfCredits is empty") }
+    else if (isNullOrUndefined(ss.majorID)) { alert("majorID is empty") }
+    else if (isNullOrUndefined(ss.teacherID)) { alert("teacherID is empty") }
     else {
       ss.name.toLowerCase();
       ss.description.toLowerCase();

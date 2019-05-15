@@ -15,11 +15,11 @@ export class AppComponent {
       url: '/home',
       icon: 'home'
     },
-    {
-      title: 'List',
-      url: '/list',
-      icon: 'list'
-    },
+    // {
+    //   title: 'List',
+    //   url: '/list',
+    //   icon: 'list'
+    // },
     {
       title: 'Add Student',
       url: '/add-student',
@@ -58,7 +58,7 @@ export class AppComponent {
     {
       title: 'View Courses',
       url: '/view-courses',
-      icon: 'person'
+      icon: 'book'
     },
     {
       title: 'Add Major',

@@ -27,10 +27,10 @@
       <ion-label>major ID</ion-label>
       <ion-input [(ngModel)]="course.majorID" name="majorID" inputmode="numeric" required maxlength=50></ion-input>
     </ion-card>
-     <ion-card>
+    <ion-card>
       <ion-label>teacher ID</ion-label>
       <ion-input [(ngModel)]="course.teacherID" name="teacherID" inputmode="numeric" required maxlength=50></ion-input>
-   
+    </ion-card>
     
     <button ion-button class="submitButton" type="submit" (click)="courseAdd()">Submit</button>
     <button ion-button class="clearButton" type="reset" (click)="clearInputs()">Clear</button>
