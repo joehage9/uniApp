@@ -69,17 +69,7 @@ export class AddTeacherPage implements OnInit {
 
      
       this.http.post('http://192.168.0.100:9100/api/TeachersValues', ss, {}).then(data => {
-        alert(ss.firstName + " " + ss.lastName + " " + ss.username + " " + ss.password + " " + ss.passwordHash + " " + ss.address + " " + ss.mobileNumber + " " + ss.email + " ");
-        this.teacher = {
-          firstName: null,
-          lastName: null,
-          username: null,
-          password: null,
-          passwordHash: null,
-          address: null,
-          mobileNumber: null,
-          email: null
-        };
+        this.clearInputs();
         alert("teacher added successfully.");
 
       }).catch(error => {

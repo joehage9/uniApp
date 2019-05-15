@@ -79,19 +79,7 @@ export class AddStudentPage implements OnInit {
 
      
       this.http.post('http://192.168.0.100:9100/api/StudentsValues', ss, {}).then(data => {
-        alert(ss.firstName + " " + ss.lastName + " " + ss.fatherName + " " + ss.username + " " + ss.password + " " + ss.passwordHash + " " + ss.address + " " + ss.mobileNumber + " " + ss.email + " " + ss.enrollmentDate);
-        this.student = {
-          firstName: null,
-          lastName: null,
-          fatherName: null,
-          username: null,
-          password: null,
-          passwordHash: null,
-          address: null,
-          mobileNumber: null,
-          email: null,
-          enrollmentDate: null
-        };
+        this.clearInputs();
         alert("Student added successfully.");
 
       }).catch(error => {

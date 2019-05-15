@@ -39,6 +39,36 @@ export class AppComponent {
       title: 'View Teachers',
       url: '/view-teachers',
       icon: 'person'
+    },
+    {
+      title: 'Add Admin',
+      url: '/add-admin',
+      icon: 'person'
+    },
+    {
+      title: 'View Admins',
+      url: '/view-admins',
+      icon: 'person'
+    },
+    {
+      title: 'Add Course',
+      url: '/add-course',
+      icon: 'book'
+    },
+    {
+      title: 'View Courses',
+      url: '/view-courses',
+      icon: 'person'
+    },
+    {
+      title: 'Add Major',
+      url: '/add-major',
+      icon: 'person'
+    },
+    {
+      title: 'View Majors',
+      url: '/view-majors',
+      icon: 'person'
     }
   ];
 

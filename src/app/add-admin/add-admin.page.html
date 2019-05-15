@@ -1,9 +1,59 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>addAdmin</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Add Admin
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <form>
+    <ion-card>
+      <ion-label>First Name</ion-label>
+      <ion-input [(ngModel)]="admin.firstName" name="firstName" autofocus="true" required maxlength=50></ion-input>
+    </ion-card>
+    <ion-card>
+      <ion-label>Last Name</ion-label>
+      <ion-input [(ngModel)]="admin.lastName" name="lastName" required maxlength=50></ion-input>
+    </ion-card>
+    <ion-card>
+      <ion-label>Username</ion-label>
+      <ion-input [(ngModel)]="admin.username" name="username" required maxlength=50></ion-input>
+    </ion-card>
+    <ion-card>
+      <ion-label>Password</ion-label>
+      <ion-input [(ngModel)]="admin.password" name="password" inputmode="password" required maxlength=250></ion-input>
+    </ion-card>
+     <ion-card>
+      <ion-label>Password hash</ion-label>
+      <ion-input [(ngModel)]="admin.passwordHash" name="passwordHash" required maxlength=250></ion-input>
+    </ion-card>
+    <ion-card>
+      <ion-label>Address</ion-label>
+      <ion-input [(ngModel)]="admin.address" name="address" required maxlength=50></ion-input>
+    </ion-card>
+    <ion-card>
+      <ion-label>Mobile Number</ion-label>
+      <ion-input [(ngModel)]="admin.mobileNumber" name="mobileNumber" inputmode="numeric" required maxlength=50></ion-input>
+    </ion-card>
+    <ion-card>
+      <ion-label>Email</ion-label>
+      <ion-input [(ngModel)]="admin.email" name="email" inputmode="email" placeholder="example@example.com" required maxlength=50></ion-input>
+    </ion-card>
+    
+    <button ion-button class="submitButton" type="submit" (click)="adminAdd()">Submit</button>
+    <button ion-button class="clearButton" type="reset" (click)="clearInputs()">Clear</button>
+  </form>
 
 </ion-content>
+
+
+
+
+
+
+
+

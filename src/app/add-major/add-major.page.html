@@ -1,9 +1,36 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>addMajor</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Add Major
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <form>
+    <ion-card>
+      <ion-label>name</ion-label>
+      <ion-input [(ngModel)]="course.name" name="name" autofocus="true" required maxlength=50></ion-input>
+    </ion-card>
+    <ion-card>
+      <ion-label>number of credits</ion-label>
+      <ion-input [(ngModel)]="course.numberOfCredits" name="numberOfCredits" inputmode="numeric" required maxlength=1></ion-input>
+    </ion-card>
+   
+    
+    <button ion-button class="submitButton" type="submit" (click)="majorAdd()">Submit</button>
+    <button ion-button class="clearButton" type="reset" (click)="clearInputs()">Clear</button>
+  </form>
 
 </ion-content>
+
+
+
+
+
+
+
+
