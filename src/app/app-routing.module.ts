@@ -19,7 +19,9 @@ const routes: Routes = [
   { path: 'view-teachers', loadChildren: './view-teachers/view-teachers.module#ViewTeachersPageModule' },
   { path: 'view-admins', loadChildren: './view-admins/view-admins.module#ViewAdminsPageModule' },
   { path: 'view-courses', loadChildren: './view-courses/view-courses.module#ViewCoursesPageModule' },
-  { path: 'view-majors', loadChildren: './view-majors/view-majors.module#ViewMajorsPageModule' }
+  { path: 'view-majors', loadChildren: './view-majors/view-majors.module#ViewMajorsPageModule' },
+  { path: 'add-administrative', loadChildren: './add-administrative/add-administrative.module#AddAdministrativePageModule' },
+  { path: 'view-administratives', loadChildren: './view-administratives/view-administratives.module#ViewAdministrativesPageModule' }
 
 ];
 

@@ -31,6 +31,7 @@ export class ViewTeachersPage implements OnInit {
     }).catch(error => {
       console.log(error);
       loading.dismiss();
+      alert("Something went wrong.");
     });
   }
 

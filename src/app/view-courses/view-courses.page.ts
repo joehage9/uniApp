@@ -28,6 +28,7 @@ export class ViewCoursesPage implements OnInit {
     }).catch(error => {
       console.log(error);
       loading.dismiss();
+      alert("Something went wrong.");
     });
 
   }

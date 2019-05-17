@@ -4,13 +4,14 @@ import { isNullOrUndefined } from 'util';
 import { LoadingController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-add-admin',
-  templateUrl: './add-admin.page.html',
-  styleUrls: ['./add-admin.page.scss'],
+  selector: 'app-add-administrative',
+  templateUrl: './add-administrative.page.html',
+  styleUrls: ['./add-administrative.page.scss'],
 })
-export class AddAdminPage implements OnInit {
+export class AddAdministrativePage implements OnInit {
 
-  admin:
+
+  administrative:
     {
       firstName: string,
       lastName: string,
@@ -20,6 +21,7 @@ export class AddAdminPage implements OnInit {
       address: string,
       mobileNumber: string,
       email: string,
+      privilegeLevel:string
     };
 
   constructor(private http: HTTP, public loadingController: LoadingController) {
@@ -27,7 +29,7 @@ export class AddAdminPage implements OnInit {
   }
 
   clearInputs() {
-    this.admin =
+    this.administrative =
       {
         firstName: null,
         lastName: null,
@@ -36,11 +38,12 @@ export class AddAdminPage implements OnInit {
         passwordHash: null,
         address: null,
         mobileNumber: null,
-        email: null
+        email: null,
+        privilegeLevel:null
       }
   }
 
-  async adminAdd() {
+  async administrativeAdd() {
     const loading = await this.loadingController.create({
       spinner: 'crescent'
     });
@@ -48,14 +51,16 @@ export class AddAdminPage implements OnInit {
     loading.present();
     let ss =
     {
-      firstName: this.admin.firstName,
-      lastName: this.admin.lastName,
-      username: this.admin.username,
-      password: this.admin.password,
-      passwordHash: this.admin.passwordHash,
-      address: this.admin.address,
-      mobileNumber: this.admin.mobileNumber,
-      email: this.admin.email
+      firstName: this.administrative.firstName,
+      lastName: this.administrative.lastName,
+      username: this.administrative.username,
+      password: this.administrative.password,
+      passwordHash: this.administrative.passwordHash,
+      address: this.administrative.address,
+      mobileNumber: this.administrative.mobileNumber,
+      email: this.administrative.email,
+      privilegeLevel:this.administrative.privilegeLevel
+
     }
 
     if (isNullOrUndefined(ss.firstName)) { alert("firstName is empty") }
@@ -66,6 +71,8 @@ export class AddAdminPage implements OnInit {
     else if (isNullOrUndefined(ss.address)) { alert("address is empty") }
     else if (isNullOrUndefined(ss.mobileNumber)) { alert("mobileNumber is empty") }
     else if (isNullOrUndefined(ss.email)) { alert("email is empty") }
+    else if (isNullOrUndefined(ss.privilegeLevel)) { alert("privilege Level is empty") }
+
     else {
       ss.firstName.toLowerCase();
       ss.lastName.toLowerCase();
@@ -74,14 +81,14 @@ export class AddAdminPage implements OnInit {
       ss.email.toLowerCase();
 
 
-      this.http.post('http://192.168.0.100:9100/api/AdminsValues', ss, {}).then(data => {
+      this.http.post('http://192.168.0.100:9100/api/AdministrativesValues', ss, {}).then(data => {
         this.clearInputs();
         loading.dismiss();
-        alert("admin added successfully.");
+        alert("administrative added successfully.");
 
       }).catch(error => {
         loading.dismiss();
-        alert("There was an error, the admin wasn't added.");        
+        alert("There was an error, the administrative wasn't added.");        
         console.log(error);        
       });
 

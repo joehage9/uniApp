@@ -43,11 +43,21 @@ export class AppComponent {
     {
       title: 'Add Admin',
       url: '/add-admin',
-      icon: 'person'
+      icon: 'person-add'
     },
     {
       title: 'View Admins',
       url: '/view-admins',
+      icon: 'person'
+    },
+    {
+      title: 'Add Administrative',
+      url: '/add-administrative',
+      icon: 'person-add'
+    },
+    {
+      title: 'View Administrative',
+      url: '/view-administratives',
       icon: 'person'
     },
     {
@@ -63,12 +73,12 @@ export class AppComponent {
     {
       title: 'Add Major',
       url: '/add-major',
-      icon: 'person'
+      icon: 'clipboard'
     },
     {
       title: 'View Majors',
       url: '/view-majors',
-      icon: 'person'
+      icon: 'clipboard'
     }
   ];
 

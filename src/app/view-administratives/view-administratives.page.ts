@@ -1,28 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { HTTP } from '@ionic-native/http/ngx';
 import { LoadingController } from '@ionic/angular';
-
 @Component({
-  selector: 'app-view-majors',
-  templateUrl: './view-majors.page.html',
-  styleUrls: ['./view-majors.page.scss'],
+  selector: 'app-view-administratives',
+  templateUrl: './view-administratives.page.html',
+  styleUrls: ['./view-administratives.page.scss'],
 })
-export class ViewMajorsPage implements OnInit {
+export class ViewAdministrativesPage implements OnInit {
 
   obj: any;
   constructor(private http: HTTP, public loadingController: LoadingController) {
-    this.getMajors();
+    this.getAdmins();
   }
 
-  async getMajors() {
+  async getAdmins() {
     const loading = await this.loadingController.create({
       spinner: 'crescent'
     });
 
     loading.present();
 
-
-    this.http.get('http://192.168.0.100:9100/api/MajorsValues', {}, {}).then(data => {
+    this.http.get('http://192.168.0.100:9100/api/AdministrativesValues', {}, {}).then(data => {
       this.obj = JSON.parse(data.data);
       loading.dismiss();
     }).catch(error => {

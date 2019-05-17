@@ -27,6 +27,7 @@ export class ViewAdminsPage implements OnInit {
     }).catch(error => {
       console.log(error);
       loading.dismiss();
+      alert("Something went wrong.");
     });
 
   }
