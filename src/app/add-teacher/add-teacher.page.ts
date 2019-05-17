@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HTTP } from '@ionic-native/http/ngx';
 import { isNullOrUndefined } from 'util';
+import { LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-add-teacher',
@@ -21,7 +22,7 @@ export class AddTeacherPage implements OnInit {
       email: string,
     };
 
-  constructor(private http: HTTP) {
+  constructor(private http: HTTP, public loadingController: LoadingController) {
     this.clearInputs();
   }
 
@@ -39,7 +40,12 @@ export class AddTeacherPage implements OnInit {
       }
   }
 
-  teacherAdd() {
+  async teacherAdd() {
+    const loading = await this.loadingController.create({
+      spinner: 'crescent'
+    });
+
+    loading.present();
     let ss =
     {
       firstName: this.teacher.firstName,
@@ -53,7 +59,7 @@ export class AddTeacherPage implements OnInit {
     }
 
     if (isNullOrUndefined(ss.firstName)) { alert("firstName is empty") }
-    else if (isNullOrUndefined(ss.lastName)) { alert("lastName is empty") } 
+    else if (isNullOrUndefined(ss.lastName)) { alert("lastName is empty") }
     else if (isNullOrUndefined(ss.username)) { alert("username is empty") }
     else if (isNullOrUndefined(ss.password)) { alert("password is empty") }
     else if (isNullOrUndefined(ss.passwordHash)) { alert("passwordhash is empty") }
@@ -67,13 +73,14 @@ export class AddTeacherPage implements OnInit {
       ss.address.toLowerCase();
       ss.email.toLowerCase();
 
-     
+
       this.http.post('http://192.168.0.100:9100/api/TeachersValues', ss, {}).then(data => {
         this.clearInputs();
+        loading.dismiss();
         alert("teacher added successfully.");
 
       }).catch(error => {
-        alert(ss);
+        loading.dismiss();
         alert("There was an error, the teacher wasn't added.");
         console.log(error);
 

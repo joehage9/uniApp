@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HTTP } from '@ionic-native/http/ngx';
 import { isNullOrUndefined } from 'util';
-
+import { LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-add-course',
@@ -19,7 +19,7 @@ export class AddCoursePage implements OnInit {
       teacherID: number
     };
 
-  constructor(private http: HTTP) {
+  constructor(private http: HTTP, public loadingController: LoadingController) {
     this.clearInputs();
   }
 
@@ -34,7 +34,12 @@ export class AddCoursePage implements OnInit {
       }
   }
 
-  courseAdd() {
+  async courseAdd() {
+    const loading = await this.loadingController.create({
+      spinner: 'crescent'
+    });
+
+    loading.present();
     let ss =
     {
       name: this.course.name,
@@ -54,12 +59,13 @@ export class AddCoursePage implements OnInit {
       ss.description.toLowerCase();
 
 
-      this.http.post('http://192.168.0.100:9100/api/CoursesValues', ss, {}).then(data => {        
+      this.http.post('http://192.168.0.100:9100/api/CoursesValues', ss, {}).then(data => {
         this.clearInputs();
+        loading.dismiss();
         alert("course added successfully.");
 
       }).catch(error => {
-        alert(ss);
+        loading.dismiss();
         alert("There was an error, the course wasn't added.");
         console.log(error);
 

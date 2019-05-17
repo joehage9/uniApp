@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HTTP } from '@ionic-native/http/ngx';
 import { isNullOrUndefined } from 'util';
+import { LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-add-admin',
@@ -21,7 +22,7 @@ export class AddAdminPage implements OnInit {
       email: string,
     };
 
-  constructor(private http: HTTP) {
+  constructor(private http: HTTP, public loadingController: LoadingController) {
     this.clearInputs();
   }
 
@@ -39,7 +40,12 @@ export class AddAdminPage implements OnInit {
       }
   }
 
-  adminAdd() {
+  async adminAdd() {
+    const loading = await this.loadingController.create({
+      spinner: 'crescent'
+    });
+
+    loading.present();
     let ss =
     {
       firstName: this.admin.firstName,
@@ -68,12 +74,14 @@ export class AddAdminPage implements OnInit {
       ss.email.toLowerCase();
 
 
-      this.http.post('http://192.168.0.100:9100/api/AdminsValues', ss, {}).then(data => {        
-       this.clearInputs();
+      this.http.post('http://192.168.0.100:9100/api/AdminsValues', ss, {}).then(data => {
+        this.clearInputs();
+        loading.dismiss();
         alert("admin added successfully.");
 
       }).catch(error => {
-        alert("There was an error, the admin wasn't added.");
+        loading.dismiss();
+        alert("There was an error, the admin wasn't added.");        
         console.log(error);
 
       });

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HTTP } from '@ionic-native/http/ngx';
 import { isNullOrUndefined } from 'util';
+import { LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-add-major',
@@ -15,7 +16,7 @@ export class AddMajorPage implements OnInit {
       numberOfCredits: number
     };
 
-  constructor(private http: HTTP) {
+  constructor(private http: HTTP, public loadingController: LoadingController) {
     this.clearInputs();
   }
 
@@ -27,7 +28,12 @@ export class AddMajorPage implements OnInit {
       }
   }
 
-  majorAdd() {
+  async majorAdd() {
+    const loading = await this.loadingController.create({
+      spinner: 'crescent'
+    });
+
+    loading.present();
     let ss =
     {
       name: this.major.name,
@@ -42,10 +48,11 @@ export class AddMajorPage implements OnInit {
 
       this.http.post('http://192.168.0.100:9100/api/MajorValues', ss, {}).then(data => {
         this.clearInputs();
+        loading.dismiss();
         alert("major added successfully.");
 
       }).catch(error => {
-        alert(ss);
+        loading.dismiss();
         alert("There was an error, the major wasn't added.");
         console.log(error);
 
