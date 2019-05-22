@@ -73,7 +73,7 @@ export class AddAdminPage implements OnInit {
       ss.username.toLowerCase();
       ss.address.toLowerCase();
       ss.email.toLowerCase();
-
+      
       this.api.addAdminValues(ss).then(data => {
         this.clearInputs();
         loading.dismiss();

@@ -10,7 +10,7 @@ import { ApiServiceService } from 'src/app/services/api-service.service';
 })
 export class ViewStudentsPage implements OnInit {
   obj: any;
-  constructor(private http: HTTP, public loadingController: LoadingController,private api:ApiServiceService) {
+  constructor(private http: HTTP, public loadingController: LoadingController, private api: ApiServiceService) {
     this.getStudents();
   }
 
@@ -21,7 +21,7 @@ export class ViewStudentsPage implements OnInit {
 
     loading.present();
 
-   this.api.getStudents().then(data => {
+    this.api.getStudents().then(data => {
       this.obj = JSON.parse(data.data);
       loading.dismiss();
     }).catch(error => {
@@ -29,6 +29,8 @@ export class ViewStudentsPage implements OnInit {
       loading.dismiss();
       alert("Something went wrong.");
     });
+
+
 
   }
   ngOnInit() {
