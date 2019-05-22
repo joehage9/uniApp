@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HTTP } from '@ionic-native/http/ngx';
 import { isNullOrUndefined } from 'util';
 import { LoadingController } from '@ionic/angular';
+import { ApiServiceService } from 'src/app/services/api-service.service';
 
 @Component({
   selector: 'app-add-administrative',
@@ -24,7 +25,7 @@ export class AddAdministrativePage implements OnInit {
       privilegeLevel:string
     };
 
-  constructor(private http: HTTP, public loadingController: LoadingController) {
+  constructor(private http: HTTP, public loadingController: LoadingController,private api:ApiServiceService) {
     this.clearInputs();
   }
 
@@ -81,7 +82,7 @@ export class AddAdministrativePage implements OnInit {
       ss.email.toLowerCase();
 
 
-      this.http.post('http://192.168.0.100:9100/api/AdministrativesValues', ss, {}).then(data => {
+      this.api.addAdministrative(ss).then(data => {
         this.clearInputs();
         loading.dismiss();
         alert("administrative added successfully.");

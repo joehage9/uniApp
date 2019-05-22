@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HTTP } from '@ionic-native/http/ngx';
 import { isNullOrUndefined } from 'util';
 import { LoadingController } from '@ionic/angular';
+import { ApiServiceService } from 'src/app/services/api-service.service';
 
 @Component({
   selector: 'app-add-teacher',
@@ -22,7 +23,7 @@ export class AddTeacherPage implements OnInit {
       email: string,
     };
 
-  constructor(private http: HTTP, public loadingController: LoadingController) {
+  constructor(private http: HTTP, public loadingController: LoadingController,private api:ApiServiceService) {
     this.clearInputs();
   }
 
@@ -74,7 +75,7 @@ export class AddTeacherPage implements OnInit {
       ss.email.toLowerCase();
 
 
-      this.http.post('http://192.168.0.100:9100/api/TeachersValues', ss, {}).then(data => {
+    this.api.addTeacher(ss).then(data => {
         this.clearInputs();
         loading.dismiss();
         alert("teacher added successfully.");

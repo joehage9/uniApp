@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HTTP } from '@ionic-native/http/ngx';
 import { LoadingController } from '@ionic/angular';
+import { ApiServiceService } from 'src/app/services/api-service.service';
 
 @Component({
   selector: 'app-view-majors',
@@ -10,7 +11,7 @@ import { LoadingController } from '@ionic/angular';
 export class ViewMajorsPage implements OnInit {
 
   obj: any;
-  constructor(private http: HTTP, public loadingController: LoadingController) {
+  constructor(private http: HTTP, public loadingController: LoadingController,private api:ApiServiceService) {
     this.getMajors();
   }
 
@@ -22,7 +23,7 @@ export class ViewMajorsPage implements OnInit {
     loading.present();
 
 
-    this.http.get('http://192.168.0.100:9100/api/MajorsValues', {}, {}).then(data => {
+  this.api.getMajors().then(data => {
       this.obj = JSON.parse(data.data);
       loading.dismiss();
     }).catch(error => {
