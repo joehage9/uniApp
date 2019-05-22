@@ -25,7 +25,7 @@
     </ion-card>
     <ion-card>
       <ion-label>Password</ion-label>
-      <ion-input [(ngModel)]="admin.password" name="password" inputmode="password" required maxlength=250></ion-input>
+      <ion-input [(ngModel)]="admin.password" name="password" type="password" required maxlength=250></ion-input>
     </ion-card>
      <ion-card>
       <ion-label>Password hash</ion-label>
@@ -37,11 +37,11 @@
     </ion-card>
     <ion-card>
       <ion-label>Mobile Number</ion-label>
-      <ion-input [(ngModel)]="admin.mobileNumber" name="mobileNumber" inputmode="numeric" required maxlength=50></ion-input>
+      <ion-input [(ngModel)]="admin.mobileNumber" name="mobileNumber" type="numeric" required maxlength=50></ion-input>
     </ion-card>
     <ion-card>
       <ion-label>Email</ion-label>
-      <ion-input [(ngModel)]="admin.email" name="email" inputmode="email" placeholder="example@example.com" required maxlength=50></ion-input>
+      <ion-input [(ngModel)]="admin.email" name="email" type="email" placeholder="example@example.com" required maxlength=50></ion-input>
     </ion-card>
     
     <button ion-button class="submitButton" type="submit" (click)="adminAdd()">Submit</button>

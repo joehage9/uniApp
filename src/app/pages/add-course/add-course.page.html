@@ -21,15 +21,15 @@
     </ion-card>
     <ion-card>
       <ion-label>number of credits</ion-label>
-      <ion-input [(ngModel)]="course.numberOfCredits" name="numberOfCredits" inputmode="numeric" required maxlength=1></ion-input>
+      <ion-input [(ngModel)]="course.numberOfCredits" name="numberOfCredits" type="numeric" required maxlength=1></ion-input>
     </ion-card>
     <ion-card>
       <ion-label>major ID</ion-label>
-      <ion-input [(ngModel)]="course.majorID" name="majorID" inputmode="numeric" required maxlength=50></ion-input>
+      <ion-input [(ngModel)]="course.majorID" name="majorID" type="numeric" required maxlength=50></ion-input>
     </ion-card>
     <ion-card>
       <ion-label>teacher ID</ion-label>
-      <ion-input [(ngModel)]="course.teacherID" name="teacherID" inputmode="numeric" required maxlength=50></ion-input>
+      <ion-input [(ngModel)]="course.teacherID" name="teacherID" type="numeric" required maxlength=50></ion-input>
     </ion-card>
     
     <button ion-button class="submitButton" type="submit" (click)="courseAdd()">Submit</button>
