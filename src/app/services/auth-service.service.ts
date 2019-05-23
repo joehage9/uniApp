@@ -20,16 +20,21 @@ export class AuthServiceService {
 
 
   isLoggedIn(): boolean {
-    console.log(this.storage.get('User'));
-    if(this.storage.get('User') != null)
-    {
-      this.storage.get('Role').then(data=>
-        {
-            console.log(data);
-        });
-      return true;
-    }
+    this.storage.get('User').then(data=>{
+      if(data == null)
+      {
+        return false;
+      }
+      else
+      {
+        this.storage.get('Role').then(data=>{
+          this.role=data;
+        })
+        return true;
+      }
+    })
     return false;
+    
   }
 
   canActivate(): boolean {
