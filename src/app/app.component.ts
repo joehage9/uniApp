@@ -15,69 +15,64 @@ export class AppComponent {
       url: '/home',
       icon: 'home'
     },
-    // {
-    //   title: 'List',
-    //   url: '/list',
-    //   icon: 'list'
-    // },
     {
       title: 'Add Student',
-      url: '/add-student',
+      url: '/students/add',
       icon: 'person-add'
     },
     {
-      title: 'View Students',
-      url: '/view-students',
+      title: 'Students',
+      url: '/students',
       icon: 'person'
     },
     {
       title: 'Add Teacher',
-      url: '/add-teacher',
+      url: '/teachers/add',
       icon: 'person-add'
     },
     {
       title: 'View Teachers',
-      url: '/view-teachers',
+      url: '/teachers',
       icon: 'person'
     },
     {
       title: 'Add Admin',
-      url: '/add-admin',
+      url: '/admins/add',
       icon: 'person-add'
     },
     {
       title: 'View Admins',
-      url: '/view-admins',
+      url: '/admins',
       icon: 'person'
     },
     {
       title: 'Add Administrative',
-      url: '/add-administrative',
+      url: '/administratives/add',
       icon: 'person-add'
     },
     {
       title: 'View Administrative',
-      url: '/view-administratives',
+      url: '/administratives',
       icon: 'person'
     },
     {
       title: 'Add Course',
-      url: '/add-course',
+      url: '/courses/add',
       icon: 'book'
     },
     {
       title: 'View Courses',
-      url: '/view-courses',
+      url: '/courses',
       icon: 'book'
     },
     {
       title: 'Add Major',
-      url: '/add-major',
+      url: '/majors/add',
       icon: 'clipboard'
     },
     {
       title: 'View Majors',
-      url: '/view-majors',
+      url: '/majors',
       icon: 'clipboard'
     }
   ];
