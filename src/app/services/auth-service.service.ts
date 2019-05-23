@@ -10,9 +10,10 @@ export class AuthServiceService {
   constructor(private http:HTTP) { }
   private BASE_URL='http://192.168.0.100:9100/api/';
 
-  login(ss)
-  {
-    return  this.http.post(this.BASE_URL+'login', ss, {});      
+  public role: string;
+
+  login(ss) {
+    return this.http.post(this.BASE_URL + 'LoginValues', ss, {});
   }
 
 

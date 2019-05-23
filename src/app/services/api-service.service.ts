@@ -7,12 +7,9 @@ import { HTTP } from '@ionic-native/http/ngx';
 export class ApiServiceService {
 
   private BASE_URL = 'http://192.168.0.100:9100/api/';
-  public role: string;
+
   constructor(private http: HTTP) { }
 
-  login(ss) {
-    return this.http.post(this.BASE_URL + 'LoginValues', ss, {});
-  }
   addAdminValues(ss) {
     return this.http.post(this.BASE_URL + 'AdminsValues', ss, {});
   }

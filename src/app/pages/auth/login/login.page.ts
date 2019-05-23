@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HTTP } from '@ionic-native/http/ngx';
 import { LoadingController, NavController } from '@ionic/angular';
-import { ApiServiceService } from 'src/app/services/api-service.service';
 import { isNullOrUndefined } from 'util';
 import { Router } from '@angular/router';
 import { AuthServiceService } from 'src/app/services/auth-service.service';
@@ -21,7 +20,7 @@ export class LoginPage implements OnInit {
       password: string
     }
 
-  constructor(private http: HTTP, public loadingController: LoadingController, private api: ApiServiceService, private router: Router, private auth: AuthServiceService) {
+  constructor(private http: HTTP, public loadingController: LoadingController, private router: Router, private auth: AuthServiceService) {
     this.clearInputs();
   }
 
@@ -51,33 +50,33 @@ export class LoginPage implements OnInit {
     else {
       ss.username.toLowerCase()
 
-      this.api.login(ss).then(data => {
+      this.auth.login(ss).then(data => {
         this.response = JSON.parse(data.data);
 
         this.clearInputs();
         loading.dismiss();
-      
+
         if (this.response == '"administrative authentication authorized"') {
-          this.api.role = "administrative";
+          this.auth.role = "administrative";
           this.goToNextPage();
         }
         else if (this.response == '"admin authentication authorized"') {
-          this.api.role = "admin";
+          this.auth.role = "admin";
           this.goToNextPage();
         }
         else if (this.response == '"student authentication authorized"') {
-          this.api.role = "student";
+          this.auth.role = "student";
           this.goToNextPage();
         }
         else if (this.response == '"teacher authentication authorized"') {
-          this.api.role = "teacher";
+          this.auth.role = "teacher";
           this.goToNextPage();
         }
         else if (this.response == '"authentication failed"') {
-          this.api.role = null;
+          this.auth.role = null;
           alert("Incorrect username or password");
         }
-        console.log(this.api.role);
+        console.log(this.auth.role);
       }).catch(error => {
         loading.dismiss();
         alert("Something went wrong");
