@@ -6,71 +6,58 @@ import { HTTP } from '@ionic-native/http/ngx';
 })
 export class ApiServiceService {
 
-  private BASE_URL='http://192.168.0.100:9100/api/';
+  private BASE_URL = 'http://192.168.0.100:9100/api/';
+  public role: string;
+  constructor(private http: HTTP) { }
 
-  constructor(private http:HTTP) { }
-
-  login(ss)
-  {
-    return this.http.post(this.BASE_URL+'LoginvValues', ss, {});      
+  login(ss) {
+    return this.http.post(this.BASE_URL + 'LoginValues', ss, {});
   }
-  addAdminValues(ss)
-  {
-    return  this.http.post(this.BASE_URL+'AdminsValues', ss, {});      
+  addAdminValues(ss) {
+    return this.http.post(this.BASE_URL + 'AdminsValues', ss, {});
   }
 
-  addAdministrative(ss)
-  {
-    return this.http.post(this.BASE_URL+'AdministrativesValues', ss, {});
+  addAdministrative(ss) {
+    return this.http.post(this.BASE_URL + 'AdministrativesValues', ss, {});
   }
 
-  addCourse(ss)
-  {
-    return  this.http.post(this.BASE_URL+'CoursesValues', ss, {});
-  }
-  
-  addMajor(ss)
-  {
-    return  this.http.post(this.BASE_URL+'MajorValues', ss, {});
+  addCourse(ss) {
+    return this.http.post(this.BASE_URL + 'CoursesValues', ss, {});
   }
 
-  addStudent(ss)
-  {
-    return  this.http.post(this.BASE_URL+'StudentsValues', ss, {});
+  addMajor(ss) {
+    return this.http.post(this.BASE_URL + 'MajorValues', ss, {});
   }
 
-  addTeacher(ss)
-  {
-    return  this.http.post(this.BASE_URL+'TeachersValues', ss, {});
+  addStudent(ss) {
+    return this.http.post(this.BASE_URL + 'StudentsValues', ss, {});
   }
 
-  getAdministratives()
-  {
-    return this.http.get(this.BASE_URL+'AdministrativesValues', {}, {});
+  addTeacher(ss) {
+    return this.http.post(this.BASE_URL + 'TeachersValues', ss, {});
   }
 
-  getAdmins()
-  {
-    return this.http.get(this.BASE_URL+'AdminsValues', {}, {});
+  getAdministratives() {
+    return this.http.get(this.BASE_URL + 'AdministrativesValues', {}, {});
   }
 
-  getCourses()
-  {
-    return  this.http.get(this.BASE_URL+'CoursesValues', {}, {});
+  getAdmins() {
+    return this.http.get(this.BASE_URL + 'AdminsValues', {}, {});
   }
 
-  getMajors()
-  {
-    return   this.http.get(this.BASE_URL+'MajorsValues', {}, {});
+  getCourses() {
+    return this.http.get(this.BASE_URL + 'CoursesValues', {}, {});
   }
 
-  getStudents()
-  {
-    return  this.http.get(this.BASE_URL+'StudentsValues', {}, {});
+  getMajors() {
+    return this.http.get(this.BASE_URL + 'MajorsValues', {}, {});
   }
 
-  getTeachers()
-  {
-    return  this.http.get(this.BASE_URL+'TeachersValues', {}, {});
+  getStudents() {
+    return this.http.get(this.BASE_URL + 'StudentsValues', {}, {});
+  }
+
+  getTeachers() {
+    return this.http.get(this.BASE_URL + 'TeachersValues', {}, {});
   }
 }

@@ -14,22 +14,25 @@ import { AuthServiceService } from 'src/app/services/auth-service.service';
 })
 export class LoginPage implements OnInit {
 
-  obj: any;
-  user: {
-    username: string,
-    password: string
-  }
+  response: any;
+  user:
+    {
+      username: string,
+      password: string
+    }
 
   constructor(private http: HTTP, public loadingController: LoadingController, private api: ApiServiceService, private router: Router, private auth: AuthServiceService) {
     this.clearInputs();
   }
 
   clearInputs() {
-    this.user = {
-      username: null,
-      password: null,
-    }
+    this.user =
+      {
+        username: null,
+        password: null,
+      }
   }
+
   async login() {
     const loading = await this.loadingController.create({
       spinner: 'crescent'
@@ -37,7 +40,8 @@ export class LoginPage implements OnInit {
 
     loading.present();
 
-    let ss = {
+    let ss =
+    {
       username: this.user.username,
       password: this.user.password
     }
@@ -48,18 +52,41 @@ export class LoginPage implements OnInit {
       ss.username.toLowerCase()
 
       this.api.login(ss).then(data => {
+        this.response = JSON.parse(data.data);
+
         this.clearInputs();
         loading.dismiss();
+      
+        if (this.response == '"administrative authentication authorized"') {
+          this.api.role = "administrative";
+          this.goToNextPage();
+        }
+        else if (this.response == '"admin authentication authorized"') {
+          this.api.role = "admin";
+          this.goToNextPage();
+        }
+        else if (this.response == '"student authentication authorized"') {
+          this.api.role = "student";
+          this.goToNextPage();
+        }
+        else if (this.response == '"teacher authentication authorized"') {
+          this.api.role = "teacher";
+          this.goToNextPage();
+        }
+        else if (this.response == '"authentication failed"') {
+          this.api.role = null;
+          alert("Incorrect username or password");
+        }
+        console.log(this.api.role);
       }).catch(error => {
         loading.dismiss();
-        alert("Incorrect username or password");
+        alert("Something went wrong");
         console.log(error);
       });
     }
   }
 
-  goToNextPage()
-  {
+  goToNextPage() {
     this.router.navigateByUrl('/home');
   }
 
