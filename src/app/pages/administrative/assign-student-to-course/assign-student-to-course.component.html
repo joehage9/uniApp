@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Assign Student To Course
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form>
+    <ion-card>
+      <ion-label>Course</ion-label>
+      <ion-input [(ngModel)]="administrative.firstName" name="firstName" autofocus="true" required maxlength=50></ion-input>
+    </ion-card>
+    <ion-card>
+      <ion-label>Student</ion-label>
+      <ion-input [(ngModel)]="administrative.lastName" name="lastName" required maxlength=50></ion-input>
+    </ion-card>
+    <ion-card>
+      <ion-label>Course Year Of Enrollment</ion-label>
+      <ion-input [(ngModel)]="administrative.username" name="username" required maxlength=50></ion-input>
+    </ion-card>
+    <ion-card>
+      <ion-label>Passed</ion-label>
+      <ion-checkbox [(ngModel)]="administrative.password" name="password" required ></ion-input>
+    </ion-card>
+     <ion-card>
+      <ion-label>Semester</ion-label>
+      <ion-input [(ngModel)]="administrative.passwordHash" name="passwordHash" required maxlength=250></ion-input>
+    </ion-card>
+    <button ion-button class="submitButton" type="submit" (click)="administrativeAdd()">Submit</button>
+    <button ion-button class="clearButton" type="reset" (click)="clearInputs()">Clear</button>
+  </form>
+
+</ion-content>
+
+
+
+
+
+
+
+

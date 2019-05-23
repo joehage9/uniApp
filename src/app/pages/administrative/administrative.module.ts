@@ -7,6 +7,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { ViewAdministrativesPage } from './view-administratives/view-administratives.page';
 import { AddAdministrativePage } from './add-administrative/add-administrative.page';
+import { AssignStudentToCourseComponent } from './assign-student-to-course/assign-student-to-course.component';
 
 const routes: Routes = [
   {
@@ -20,6 +21,10 @@ const routes: Routes = [
   {
     path: 'assign-student-to-major',
     component: AssignStudentToMajorPage
+  },
+  {
+    path:'assign-student-to-course',
+    component:AssignStudentToCourseComponent
   }
 ];
 
@@ -30,7 +35,7 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [ViewAdministrativesPage,AddAdministrativePage,AssignStudentToMajorPage]
+  declarations: [ViewAdministrativesPage,AddAdministrativePage,AssignStudentToMajorPage,AssignStudentToCourseComponent]
 
 })
 export class AdministrativeModule { }

@@ -61,4 +61,9 @@ export class ApiServiceService {
   assignStudentToMajor(ss){
     return this.http.post(this.BASE_URL + 'MajorStudentsValues', {}, {});
   }
+
+  assignStudentToCourse(ss)
+  {
+    return this.http.post(this.BASE_URL+'CoursesStudentsValues',{},{});
+  }
 }

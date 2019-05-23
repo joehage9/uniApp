@@ -84,6 +84,11 @@ export class AppComponent  implements OnInit{
           url: '/administratives/assign-student-to-major',
           icon: 'person'
         },
+        {
+          title: 'Assign student to course',
+          url: '/administratives/assign-student-to-course',
+          icon: 'person'         
+        }
       ]
     },
     {
