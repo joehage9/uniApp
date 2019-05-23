@@ -1,7 +1,7 @@
+import { AuthServiceService } from './services/auth-service.service';
 import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
 import { Event } from '@angular/router';
-
 
 import { Platform, NavController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
@@ -121,6 +121,7 @@ export class AppComponent  implements OnInit{
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private router:Router,
+    private auth:AuthServiceService
   ) {
     this.initializeApp();
   }
@@ -132,6 +133,14 @@ export class AppComponent  implements OnInit{
       this.statusBar.hide();
     });
   }
+
+  logout()
+  {
+    this.auth.role=null;
+    this.router.navigateByUrl('/login');
+
+  }
+
   ngOnInit()
   {
     this.router.events.subscribe((res) => { 
