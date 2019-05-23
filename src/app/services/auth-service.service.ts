@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HTTP } from '@ionic-native/http/ngx';
+import { Router } from '@angular/router';
+import { Storage } from '@ionic/storage';
 
 
 @Injectable({
@@ -7,7 +9,7 @@ import { HTTP } from '@ionic-native/http/ngx';
 })
 export class AuthServiceService {
 
-  constructor(private http:HTTP) { }
+  constructor(private http:HTTP,private storage: Storage,private router:Router) { }
   private BASE_URL='http://192.168.0.100:9100/api/';
 
   public role: string;
@@ -18,20 +20,24 @@ export class AuthServiceService {
 
 
   isLoggedIn(): boolean {
-    // if (this.localStorage.getItem('user') != null) 
-    //   return true;
-    // else
-    //   return false;
-
-    //NEED TO ADD LOGIN ALGORITHM
-    return true;
+    console.log(this.storage.get('User'));
+    if(this.storage.get('User') != null)
+    {
+      this.storage.get('Role').then(data=>
+        {
+            console.log(data);
+        });
+      return true;
+    }
+    return false;
   }
 
   canActivate(): boolean {
     if (this.isLoggedIn()) {
+      
       return true;
     } else {
-      // this.router.navigateByUrl('/');
+      this.router.navigateByUrl('/');
       return false;
     }
   }
