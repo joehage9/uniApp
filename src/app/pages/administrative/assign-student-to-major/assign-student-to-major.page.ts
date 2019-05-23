@@ -11,7 +11,8 @@ import { ApiServiceService } from 'src/app/services/api-service.service';
   styleUrls: ['./assign-student-to-major.page.scss'],
 })
 export class AssignStudentToMajorPage implements OnInit {
-
+  private majors;
+  private students;
   majorStudent:
     {
       major:number,
@@ -70,6 +71,14 @@ export class AssignStudentToMajorPage implements OnInit {
 
     }
   ngOnInit() {
+
+    this.api.getMajors().then(data=>{
+      this.majors=JSON.parse(data.data);
+    })
+
+    this.api.getStudents().then(data=>{
+      this.students=JSON.parse(data.data);
+    })
   }
 
 }

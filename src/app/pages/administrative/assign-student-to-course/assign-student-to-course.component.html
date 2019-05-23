@@ -12,28 +12,28 @@
 <ion-content>
   <form>
     <ion-card>
-      <ion-select placeholder="Select Course">
+      <ion-select [(ngModel)]="studentCourse.studentID" name="student" placeholder="Select Student">
         <!-- <ion-select-option>None</ion-select-option> -->
-        <ion-select-option *ngFor="let s of this.students" value="s.ID">{{s.firstName +" "+s.lastName}}</ion-select-option>
+        <ion-select-option *ngFor="let s of students" value="{{s.ID}}">{{s.firstName +" "+s.lastName}}</ion-select-option>
       </ion-select>
     </ion-card>
     <ion-card>
-      <ion-label>Student</ion-label>
-      <ion-input [(ngModel)]="administrative.lastName" name="lastName" required maxlength=50></ion-input>
+      <ion-select  [(ngModel)]="studentCourse.courseID" name="course" placeholder="Select Course">
+        <!-- <ion-select-option>None</ion-select-option> -->
+        <ion-select-option *ngFor="let s of courses" value="{{s.ID}}">{{s.name}}</ion-select-option>
+      </ion-select>
     </ion-card>
     <ion-card>
       <ion-label>Course Year Of Enrollment</ion-label>
-      <ion-input [(ngModel)]="administrative.username" name="username" required maxlength=50></ion-input>
-    </ion-card>
-    <ion-card>
-      <ion-label>Passed</ion-label>
-      <ion-checkbox [(ngModel)]="administrative.password" name="password" required ></ion-checkbox>
+      <ion-input  [(ngModel)]="studentCourse.courseYearOfEnrollment" name="courseYearOfEnrolment" required type="number" maxlength=50></ion-input>
     </ion-card>
      <ion-card>
-      <ion-label>Semester</ion-label>
-      <ion-input [(ngModel)]="administrative.passwordHash" name="passwordHash" required maxlength=250></ion-input>
+      <ion-select [(ngModel)]="studentCourse.semesterId" name="semesterId" placeholder="Select Semester">
+        <!-- <ion-select-option>None</ion-select-option> -->
+        <ion-select-option *ngFor="let s of semesters" value="{{s.ID}}">{{s.name}}</ion-select-option>
+      </ion-select>
     </ion-card>
-    <button ion-button class="submitButton" type="submit" (click)="administrativeAdd()">Submit</button>
+    <button ion-button class="submitButton" type="submit" (click)="addMajorStudentsValues()">Submit</button>
     <button ion-button class="clearButton" type="reset" (click)="clearInputs()">Clear</button>
   </form>
 

@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Add Semester
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form>
+    <ion-card>
+      <ion-label>Semester Name</ion-label>
+      <ion-input [(ngModel)]="Semester.name" name="name" autofocus="true" required maxlength=50></ion-input>
+    </ion-card>
+    <button ion-button class="btn btn-success submitButton" type="submit" (click)="semesterAdd()">Submit</button>
+    <button ion-button class="btn btn-danger clearButton" type="reset" (click)="clearInputs()">Clear</button>
+    </form> 
+    </ion-content>

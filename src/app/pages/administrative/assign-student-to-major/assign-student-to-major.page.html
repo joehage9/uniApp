@@ -12,20 +12,24 @@
 <ion-content>
   <form>
     <ion-card>
-      <ion-label>Major</ion-label>
-      <ion-input [(ngModel)]="majorStudent.major" name="firstName" autofocus="true" required maxlength=50></ion-input>
+      <ion-select  class="form-control" [(ngModel)]="studentCourse.major" name="major" placeholder="Select Majors">
+        <!-- <ion-select-option>None</ion-select-option> -->
+        <ion-select-option *ngFor="let s of majors" value="{{s.ID}}">{{s.name}} <span style="color:crimson">{{s.numberOfCredits}}</span></ion-select-option>
+      </ion-select>
     </ion-card>
     <ion-card>
-      <ion-label>Student</ion-label>
-      <ion-input [(ngModel)]="majorStudent.student" name="lastName" required maxlength=50></ion-input>
+      <ion-select  class="form-control" [(ngModel)]="majorStudent.student" name="student" placeholder="Select Student">
+        <!-- <ion-select-option>None</ion-select-option> -->
+        <ion-select-option *ngFor="let s of students" value="{{s.ID}}">{{s.firstName +" "+s.lastName}}</ion-select-option>
+      </ion-select>
     </ion-card>
     <ion-card>
       <ion-label>Graduated</ion-label>
-      <ion-checkbox [(ngModel)]="majorStudent.graduated" name="username" required></ion-checkbox>
+      <ion-checkbox  class="form-control" [(ngModel)]="majorStudent.graduated" name="username" required></ion-checkbox>
     </ion-card>
     
-    <button ion-button class="submitButton" type="submit" (click)="administrativeAdd()">Submit</button>
-    <button ion-button class="clearButton" type="reset" (click)="clearInputs()">Clear</button>
+    <button ion-button class="btn btn-success submitButton" type="submit" (click)="addMajorStudentsValues()">Submit</button>
+    <button ion-button class="btn btn-danger clearButton" type="reset" (click)="clearInputs()">Clear</button>
   </form>
 
 </ion-content>

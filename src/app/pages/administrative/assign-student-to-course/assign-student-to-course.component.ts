@@ -14,12 +14,15 @@ import { ApiServiceService } from 'src/app/services/api-service.service';
 export class AssignStudentToCourseComponent implements OnInit {
   private students;
   private courses;
+  private semesters;
   private studentCourse:
   {
-    course:number,
-    student:number,
-    courseYearOfEnrolment:Date,
-    semesterId:number
+    courseID:number,
+    studentID:number,
+    courseYearOfEnrollment:Date,
+    passed:number,
+    semesterId:number,
+ 
   }
   constructor(private http: HTTP, public loadingController: LoadingController,private api:ApiServiceService) {
     this.clearInputs();
@@ -29,10 +32,12 @@ export class AssignStudentToCourseComponent implements OnInit {
    {
     this.studentCourse=
     {
-      course:null,
-      student:null,
-      courseYearOfEnrolment:null,
-      semesterId:null
+      courseID:null,
+      studentID:null,
+      courseYearOfEnrollment:null,
+      passed:0,
+      semesterId:null,
+   
     }
    }
 
@@ -44,20 +49,23 @@ export class AssignStudentToCourseComponent implements OnInit {
     loading.present();
     let ss =
     {
-      course:this.studentCourse.course,
-      student:this.studentCourse.student,
-      courseYearOfEnrolment:this.studentCourse.courseYearOfEnrolment,
-      semesterId:this.studentCourse.semesterId
+      courseID:this.studentCourse.courseID,
+      studentID:this.studentCourse.studentID,
+      courseYearOfEnrollment:this.studentCourse.courseYearOfEnrollment,
+      passed:0,
+      semesterId:this.studentCourse.semesterId,
+  
 
     }
 
-    if (isNullOrUndefined(ss.course)) { alert("Course is empty") }
-    else if (isNullOrUndefined(ss.student)) { alert("student is empty") }
-    else if (isNullOrUndefined(ss.courseYearOfEnrolment)) { alert("Course Of Year Of Enrolment is empty") }
+    if (isNullOrUndefined(ss.courseID)) { alert("Course is empty") }
+    else if (isNullOrUndefined(ss.studentID)) { alert("student is empty") }
+    else if (isNullOrUndefined(ss.courseYearOfEnrollment)) { alert("Course Of Year Of Enrolment is empty") }
     else if (isNullOrUndefined(ss.semesterId)) { alert("Semester ID is empty") }
 
     else { 
 
+      console.log(ss);
       this.api.assignStudentToCourse(ss).then(data => {
         this.clearInputs();
         loading.dismiss();
@@ -77,8 +85,14 @@ export class AssignStudentToCourseComponent implements OnInit {
   ngOnInit() {
     this.api.getStudents().then(data=>{
       this.students = JSON.parse(data.data);
-      console.log(data);
     })
-  }
+    this.api.getCourses().then(data=>{
+      this.courses=JSON.parse(data.data);
+    })
+
+    this.api.getSemesters().then(data=>{
+      this.semesters=JSON.parse(data.data);
+    })
+    }
 
 }

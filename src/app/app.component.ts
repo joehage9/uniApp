@@ -120,7 +120,22 @@ export class AppComponent  implements OnInit{
       icon: 'clipboard'
     }
       ]
-    } 
+    },
+    {
+      title:'Semester',
+      children:[
+{
+      title: 'Add Semester',
+      url: '/semester/add',
+      icon: 'clipboard'
+    },
+    {
+      title: 'View Semester',
+      url: '/semester',
+      icon: 'clipboard'
+    }
+      ]
+    }  
    
    
     

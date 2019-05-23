@@ -5,7 +5,7 @@ import { AuthServiceService } from './services/auth-service.service';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'home',
     pathMatch: 'full',
   },
   
@@ -22,6 +22,9 @@ const routes: Routes = [
   { path:'administratives',loadChildren:'./pages/administrative/administrative.module#AdministrativeModule',  canActivate:[AuthServiceService]},
 
   { path:'teachers',loadChildren:'./pages/teachers/teachers.module#TeachersModule',  canActivate:[AuthServiceService]},
+
+  { path:'semester',loadChildren:'./pages/semester/semester.module#SemesterModule',  canActivate:[AuthServiceService]},
+
 
 
   { path: 'login', loadChildren: './pages/auth/login/login.module#LoginPageModule' },
