@@ -45,7 +45,7 @@ export class AssignStudentToMajorPage implements OnInit {
         major:this.majorStudent.major,
         student:this.majorStudent.student,
         graduated:this.majorStudent.graduated,
-        enrollmentDate:Date.now()
+        enrollmentDate:new Date().toISOString().slice(0,10)
   
       }
   

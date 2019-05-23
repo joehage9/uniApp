@@ -63,7 +63,7 @@ export class AddStudentPage implements OnInit {
       address: this.student.address,
       mobileNumber: this.student.mobileNumber,
       email: this.student.email,
-      enrollmentDate: Date.now()
+      enrollmentDate:new Date().toISOString().slice(0,10)
     }
 
     if (isNullOrUndefined(ss.firstName)) { alert("firstName is empty"); }
@@ -83,7 +83,7 @@ export class AddStudentPage implements OnInit {
       ss.username.toLowerCase();
       ss.address.toLowerCase();
       ss.email.toLowerCase();
-
+      console.log(ss);
       this.api.addStudent(ss).then(data => {
         this.clearInputs();
         loading.dismiss();

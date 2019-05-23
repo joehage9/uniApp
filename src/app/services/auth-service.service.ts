@@ -20,20 +20,20 @@ export class AuthServiceService {
 
 
   isLoggedIn(): boolean {
-    this.storage.get('User').then(data=>{
-      if(data == null)
-      {
-        return false;
-      }
-      else
-      {
-        this.storage.get('Role').then(data=>{
-          this.role=data;
-        })
-        return true;
-      }
-    })
-    return false;
+    // this.storage.get('User').then(data=>{
+    //   if(data == null)
+    //   {
+    //     return false;
+    //   }
+    //   else
+    //   {
+    //     this.storage.get('Role').then(data=>{
+    //       this.role=data;
+    //     })
+    //     return true;
+    //   }
+    // })
+    return true ;
     
   }
 
