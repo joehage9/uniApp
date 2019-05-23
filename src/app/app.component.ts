@@ -136,7 +136,6 @@ export class AppComponent  implements OnInit{
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationEnd ) {
         this.currentUrl = event.url;
-        console.log(this.currentUrl)
       }
     });  }
 }

@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { HTTP } from '@ionic-native/http/ngx';
 import { LoadingController } from '@ionic/angular';
 import { ApiServiceService } from 'src/app/services/api-service.service';
+import { isNullOrUndefined } from 'util';
 import { Router } from '@angular/router';
+import { AuthServiceService } from 'src/app/services/auth-service.service';
 
 
 @Component({
@@ -13,9 +15,22 @@ import { Router } from '@angular/router';
 export class LoginPage implements OnInit {
 
   obj: any;
+  user:{
+    email:string,
+    password:string
+  }
   
-  constructor(private http: HTTP, public loadingController: LoadingController, private api: ApiServiceService, private router: Router) { }
+  constructor(private http: HTTP, public loadingController: LoadingController, private api: ApiServiceService, private router: Router,private auth:AuthServiceService) {
+    this.clearInputs();
+   }
 
+   clearInputs()
+   {
+     this.user={
+       email:null,
+       password:null,
+     }
+   }
   async login() {
     const loading = await this.loadingController.create({
       spinner: 'crescent'
@@ -67,6 +82,19 @@ export class LoginPage implements OnInit {
       loading.dismiss();
       alert("Something went wrong.");
     });
+
+    let ss={
+      email:this.user.email,
+      password:this.user.password
+    }
+    
+    if (isNullOrUndefined(ss.email)) { alert("Email is empty") }
+    else if (isNullOrUndefined(ss.password)) { alert("Password is empty") }
+    else { ss.email.toLowerCase()}
+
+    this.auth.login(ss).then(data=>{
+        //NEED TO ADD CODE HERE.
+    })
   }
 
 
