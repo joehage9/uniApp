@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
+import { Event } from '@angular/router';
 
 
 import { Platform, NavController } from '@ionic/angular';
@@ -133,10 +134,8 @@ export class AppComponent  implements OnInit{
   }
   ngOnInit()
   {
-    // this.router.events.subscribe((event: Event) => {
-    //   if (event instanceof NavigationEnd ) {
-    //     this.currentUrl = event.url;
-    //   }
-    // });  
+    this.router.events.subscribe((res) => { 
+      this.currentUrl=this.router.url;
+  });
   }
 }

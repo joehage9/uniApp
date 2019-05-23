@@ -11,22 +11,16 @@ const routes: Routes = [
   { path: 'home', loadChildren: './pages/home/home.module#HomePageModule' },
 
   { path:'students',loadChildren:'./pages/students/students.module#StudentsModule'},
-  { path:'students/add',loadChildren:'./pages/students/students.module#StudentsModule'},
 
   { path:'admins',loadChildren:'./pages/admins/admins.module#AdminsModule'},
-  { path:'admins/add',loadChildren:'./pages/admins/admins.module#AdminsModule'},
 
   { path:'courses',loadChildren:'./pages/courses/courses.module#CoursesModule'},
-  { path:'courses/add',loadChildren:'./pages/courses/courses.module#CoursesModule'},
 
   { path:'majors',loadChildren:'./pages/majors/majors.module#MajorsModule'},
-  { path:'majors/add',loadChildren:'./pages/majors/majors.module#MajorsModule'},
 
   { path:'administratives',loadChildren:'./pages/administrative/administrative.module#AdministrativeModule'},
-  { path:'administratives/add',loadChildren:'./pages/administrative/administrative.module#AdministrativeModule'},
 
   { path:'teachers',loadChildren:'./pages/teachers/teachers.module#TeachersModule'},
-  { path:'teachers/add',loadChildren:'./pages/teachers/teachers.module#TeachersModule'},
 
 
   { path: 'login', loadChildren: './pages/auth/login/login.module#LoginPageModule' }
