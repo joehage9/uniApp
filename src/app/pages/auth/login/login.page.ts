@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HTTP } from '@ionic-native/http/ngx';
-import { LoadingController } from '@ionic/angular';
+import { LoadingController, NavController } from '@ionic/angular';
 import { ApiServiceService } from 'src/app/services/api-service.service';
 import { isNullOrUndefined } from 'util';
 import { Router } from '@angular/router';
@@ -58,7 +58,10 @@ export class LoginPage implements OnInit {
     }
   }
 
-
+  goToNextPage()
+  {
+    this.router.navigateByUrl('/home');
+  }
 
   ngOnInit() {
   }
