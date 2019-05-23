@@ -1,3 +1,4 @@
+import { AssignStudentToMajorPage } from './assign-student-to-major/assign-student-to-major.page';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -15,6 +16,10 @@ const routes: Routes = [
   {
     path: 'add',
     component: AddAdministrativePage
+  },
+  {
+    path: 'assign-student-to-major',
+    component: AssignStudentToMajorPage
   }
 ];
 
@@ -25,7 +30,7 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [ViewAdministrativesPage,AddAdministrativePage]
+  declarations: [ViewAdministrativesPage,AddAdministrativePage,AssignStudentToMajorPage]
 
 })
 export class AdministrativeModule { }

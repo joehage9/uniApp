@@ -23,7 +23,7 @@ const routes: Routes = [
   { path:'teachers',loadChildren:'./pages/teachers/teachers.module#TeachersModule'},
 
 
-  { path: 'login', loadChildren: './pages/auth/login/login.module#LoginPageModule' }
+  { path: 'login', loadChildren: './pages/auth/login/login.module#LoginPageModule' },
 
 
 ];

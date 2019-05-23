@@ -63,7 +63,7 @@ export class AddStudentPage implements OnInit {
       address: this.student.address,
       mobileNumber: this.student.mobileNumber,
       email: this.student.email,
-      enrollmentDate: this.student.enrollmentDate
+      enrollmentDate: Date.now()
     }
 
     if (isNullOrUndefined(ss.firstName)) { alert("firstName is empty"); }

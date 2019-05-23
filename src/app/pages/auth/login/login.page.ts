@@ -52,30 +52,21 @@ export class LoginPage implements OnInit {
 
       this.auth.login(ss).then(data => {
         this.response = JSON.parse(data.data);
-
+        // console.log(data.data);
+        // console.log(this.response);
         this.clearInputs();
         loading.dismiss();
 
-        if (this.response == '"administrative authentication authorized"') {
-          this.auth.role = "administrative";
-          this.goToNextPage();
+        if(this.response.Success==true)
+        {
+          this.auth.role=this.response.Role;
+          this.goToNextPage();  
         }
-        else if (this.response == '"admin authentication authorized"') {
-          this.auth.role = "admin";
-          this.goToNextPage();
+        else
+        {
+          alert(this.response.Error);
         }
-        else if (this.response == '"student authentication authorized"') {
-          this.auth.role = "student";
-          this.goToNextPage();
-        }
-        else if (this.response == '"teacher authentication authorized"') {
-          this.auth.role = "teacher";
-          this.goToNextPage();
-        }
-        else if (this.response == '"authentication failed"') {
-          this.auth.role = null;
-          alert("Incorrect username or password");
-        }
+        
         console.log(this.auth.role);
       }).catch(error => {
         loading.dismiss();

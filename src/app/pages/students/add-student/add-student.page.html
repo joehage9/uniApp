@@ -47,10 +47,6 @@
       <ion-label>Email</ion-label>
       <ion-input [(ngModel)]="student.email" name="email" placeholder="example@example.com" type="email" maxlength=50></ion-input>
     </ion-card>
-    <ion-card>
-      <ion-label>Enrollment Date</ion-label>
-      <ion-datetime displayFormat="MM/DD/YYYY" pickerFormat="D/M/YYYY" [(ngModel)]="student.enrollmentDate" name="enrollmentDate"></ion-datetime>
-    </ion-card>
     
     <button ion-button class="submitButton" type="submit" (click)="studentAdd()">Submit</button>
     <button ion-button class="clearButton" type="reset" (click)="clearInputs()">Clear</button>
