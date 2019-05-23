@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HTTP } from '@ionic-native/http/ngx';
 import { ApiServiceService } from './services/api-service.service';
+import { AuthServiceService } from './services/auth-service.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,6 +25,7 @@ import { ApiServiceService } from './services/api-service.service';
     SplashScreen,
     HTTP,
     ApiServiceService,
+    AuthServiceService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

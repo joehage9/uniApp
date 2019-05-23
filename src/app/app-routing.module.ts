@@ -7,6 +7,7 @@ const routes: Routes = [
     redirectTo: 'login',
     pathMatch: 'full',
   },
+  
   { path: 'home', loadChildren: './pages/home/home.module#HomePageModule' },
 
   { path:'students',loadChildren:'./pages/students/students.module#StudentsModule'},
@@ -28,7 +29,7 @@ const routes: Routes = [
   { path:'teachers/add',loadChildren:'./pages/teachers/teachers.module#TeachersModule'},
 
 
-  { path: 'login', loadChildren: './auth/login/login.module#LoginPageModule' }
+  { path: 'login', loadChildren: './pages/auth/login/login.module#LoginPageModule' }
 
 
 ];

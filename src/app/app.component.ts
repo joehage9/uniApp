@@ -1,14 +1,19 @@
 import { Component } from '@angular/core';
+import { OnInit } from '@angular/core';
 
-import { Platform } from '@ionic/angular';
+
+import { Platform, NavController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { Router, NavigationEnd } from '@angular/router';
+
 
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html'
 })
-export class AppComponent {
+export class AppComponent  implements OnInit{
+  private currentUrl='';
   public appPages = [
     {
       title: 'Home',
@@ -16,56 +21,84 @@ export class AppComponent {
       icon: 'home'
     },
     {
-      title: 'Add Student',
-      url: '/students/add',
-      icon: 'person-add'
+      title:'Students',
+      children:[
+        {
+          title: 'Add Student',
+          url: '/students/add',
+          icon: 'person-add'
+        },
+        {
+          title: 'View Students',
+          url: '/students',
+          icon: 'person'
+        },
+      ]
     },
     {
-      title: 'Students',
-      url: '/students',
-      icon: 'person'
+      title:'Teachers',
+      children:[
+        {
+          title: 'Add Teacher',
+          url: '/teachers/add',
+          icon: 'person-add'
+        },
+        {
+          title: 'View Teachers',
+          url: '/teachers',
+          icon: 'person'
+        },
+      ]
     },
     {
-      title: 'Add Teacher',
-      url: '/teachers/add',
-      icon: 'person-add'
+      title:'Admins',
+      children:[
+        {
+          title: 'Add Admin',
+          url: '/admins/add',
+          icon: 'person-add'
+        },
+        {
+          title: 'View Admins',
+          url: '/admins',
+          icon: 'person'
+        },
+      ]
     },
     {
-      title: 'View Teachers',
-      url: '/teachers',
-      icon: 'person'
+      title:'Administratives',
+      children:[
+        {
+          title: 'Add Administrative',
+          url: '/administratives/add',
+          icon: 'person-add'
+        },
+        {
+          title: 'View Administrative',
+          url: '/administratives',
+          icon: 'person'
+        },
+      ]
     },
     {
-      title: 'Add Admin',
-      url: '/admins/add',
-      icon: 'person-add'
+      title:'Courses',
+      children:[
+        {
+          title: 'Add Course',
+          url: '/courses/add',
+          icon: 'book'
+        },
+        {
+          title: 'View Courses',
+          url: '/courses',
+          icon: 'book'
+        },
+      ]
     },
     {
-      title: 'View Admins',
-      url: '/admins',
-      icon: 'person'
-    },
-    {
-      title: 'Add Administrative',
-      url: '/administratives/add',
-      icon: 'person-add'
-    },
-    {
-      title: 'View Administrative',
-      url: '/administratives',
-      icon: 'person'
-    },
-    {
-      title: 'Add Course',
-      url: '/courses/add',
-      icon: 'book'
-    },
-    {
-      title: 'View Courses',
-      url: '/courses',
-      icon: 'book'
-    },
-    {
+      title:'Majors',
+      children:[
+{
       title: 'Add Major',
       url: '/majors/add',
       icon: 'clipboard'
@@ -75,12 +108,18 @@ export class AppComponent {
       url: '/majors',
       icon: 'clipboard'
     }
+      ]
+    } 
+   
+   
+    
   ];
 
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,
+    private router:Router,
   ) {
     this.initializeApp();
   }
@@ -92,4 +131,12 @@ export class AppComponent {
       this.statusBar.hide();
     });
   }
+  ngOnInit()
+  {
+    this.router.events.subscribe((event: Event) => {
+      if (event instanceof NavigationEnd ) {
+        this.currentUrl = event.url;
+        console.log(this.currentUrl)
+      }
+    });  }
 }
