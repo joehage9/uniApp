@@ -29,7 +29,7 @@
     </ion-card>
     <ion-card>
       <ion-label>Password</ion-label>
-      <ion-input [(ngModel)]="student.password" name="password" maxlength=250></ion-input>
+      <ion-input [(ngModel)]="student.password" name="password" type="password" maxlength=250></ion-input>
     </ion-card>
      <ion-card>
       <ion-label>Password hash</ion-label>
@@ -41,11 +41,11 @@
     </ion-card>
     <ion-card>
       <ion-label>Mobile Number</ion-label>
-      <ion-input [(ngModel)]="student.mobileNumber" name="mobileNumber" maxlength=50></ion-input>
+      <ion-input [(ngModel)]="student.mobileNumber" name="mobileNumber" type="Number" maxlength=50></ion-input>
     </ion-card>
     <ion-card>
       <ion-label>Email</ion-label>
-      <ion-input [(ngModel)]="student.email" name="email" placeholder="example@example.com" maxlength=50></ion-input>
+      <ion-input [(ngModel)]="student.email" name="email" placeholder="example@example.com" type="email" maxlength=50></ion-input>
     </ion-card>
     <ion-card>
       <ion-label>Enrollment Date</ion-label>

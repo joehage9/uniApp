@@ -15,22 +15,21 @@ import { AuthServiceService } from 'src/app/services/auth-service.service';
 export class LoginPage implements OnInit {
 
   obj: any;
-  user:{
-    email:string,
-    password:string
+  user: {
+    username: string,
+    password: string
   }
-  
-  constructor(private http: HTTP, public loadingController: LoadingController, private api: ApiServiceService, private router: Router,private auth:AuthServiceService) {
-    this.clearInputs();
-   }
 
-   clearInputs()
-   {
-     this.user={
-       email:null,
-       password:null,
-     }
-   }
+  constructor(private http: HTTP, public loadingController: LoadingController, private api: ApiServiceService, private router: Router, private auth: AuthServiceService) {
+    this.clearInputs();
+  }
+
+  clearInputs() {
+    this.user = {
+      username: null,
+      password: null,
+    }
+  }
   async login() {
     const loading = await this.loadingController.create({
       spinner: 'crescent'
@@ -38,63 +37,25 @@ export class LoginPage implements OnInit {
 
     loading.present();
 
-    this.api.getTeachers().then(data => {
-      this.obj = JSON.parse(data.data);
-      loading.dismiss();
-      // this.router.navigate(['/home'])
-      alert(this.obj);
-
-    }).catch(error => {
-      console.log(error);
-      loading.dismiss();
-      alert("Something went wrong.");
-    });
-
-    this.api.getStudents().then(data => {
-      this.obj = JSON.parse(data.data);
-      loading.dismiss();
-      alert(this.obj);
-
-    }).catch(error => {
-      console.log(error);
-      loading.dismiss();
-      alert("Something went wrong.");
-    });
-
-    this.api.getAdministratives().then(data => {
-      this.obj = JSON.parse(data.data);
-      loading.dismiss();
-      alert(this.obj);
-
-    }).catch(error => {
-      console.log(error);
-      loading.dismiss();
-      alert("Something went wrong.");
-    });
-
-    this.api.getAdmins().then(data => {
-      this.obj = JSON.parse(data.data);
-      loading.dismiss();
-      alert(this.obj);
-
-    }).catch(error => {
-      console.log(error);
-      loading.dismiss();
-      alert("Something went wrong.");
-    });
-
-    let ss={
-      email:this.user.email,
-      password:this.user.password
+    let ss = {
+      username: this.user.username,
+      password: this.user.password
     }
-    
-    if (isNullOrUndefined(ss.email)) { alert("Email is empty") }
-    else if (isNullOrUndefined(ss.password)) { alert("Password is empty") }
-    else { ss.email.toLowerCase()}
 
-    this.auth.login(ss).then(data=>{
-        //NEED TO ADD CODE HERE.
-    })
+    if (isNullOrUndefined(ss.username)) { alert("Username is empty") }
+    else if (isNullOrUndefined(ss.password)) { alert("Password is empty") }
+    else {
+      ss.username.toLowerCase()
+
+      this.api.login(ss).then(data => {
+        this.clearInputs();
+        loading.dismiss();
+      }).catch(error => {
+        loading.dismiss();
+        alert("Incorrect username or password");
+        console.log(error);
+      });
+    }
   }
 
 

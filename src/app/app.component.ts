@@ -133,9 +133,10 @@ export class AppComponent  implements OnInit{
   }
   ngOnInit()
   {
-    this.router.events.subscribe((event: Event) => {
-      if (event instanceof NavigationEnd ) {
-        this.currentUrl = event.url;
-      }
-    });  }
+    // this.router.events.subscribe((event: Event) => {
+    //   if (event instanceof NavigationEnd ) {
+    //     this.currentUrl = event.url;
+    //   }
+    // });  
+  }
 }

@@ -10,7 +10,10 @@ export class ApiServiceService {
 
   constructor(private http:HTTP) { }
 
-
+  login(ss)
+  {
+    return this.http.post(this.BASE_URL+'LoginvValues', ss, {});      
+  }
   addAdminValues(ss)
   {
     return  this.http.post(this.BASE_URL+'AdminsValues', ss, {});      
