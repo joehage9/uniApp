@@ -12,8 +12,10 @@
 <ion-content>
   <form>
     <ion-card>
-      <ion-label>Course</ion-label>
-      <ion-input [(ngModel)]="administrative.firstName" name="firstName" autofocus="true" required maxlength=50></ion-input>
+      <ion-select placeholder="Select Course">
+        <!-- <ion-select-option>None</ion-select-option> -->
+        <ion-select-option *ngFor="let s of this.students" value="s.ID">{{s.firstName +" "+s.lastName}}</ion-select-option>
+      </ion-select>
     </ion-card>
     <ion-card>
       <ion-label>Student</ion-label>
@@ -25,7 +27,7 @@
     </ion-card>
     <ion-card>
       <ion-label>Passed</ion-label>
-      <ion-checkbox [(ngModel)]="administrative.password" name="password" required ></ion-input>
+      <ion-checkbox [(ngModel)]="administrative.password" name="password" required ></ion-checkbox>
     </ion-card>
      <ion-card>
       <ion-label>Semester</ion-label>

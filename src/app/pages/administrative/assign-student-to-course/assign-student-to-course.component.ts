@@ -12,7 +12,8 @@ import { ApiServiceService } from 'src/app/services/api-service.service';
   styleUrls: ['./assign-student-to-course.component.scss'],
 })
 export class AssignStudentToCourseComponent implements OnInit {
-
+  private students;
+  private courses;
   private studentCourse:
   {
     course:number,
@@ -73,6 +74,11 @@ export class AssignStudentToCourseComponent implements OnInit {
   }
 
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.api.getStudents().then(data=>{
+      this.students = JSON.parse(data.data);
+      console.log(data);
+    })
+  }
 
 }
