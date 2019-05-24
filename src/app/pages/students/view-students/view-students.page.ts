@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HTTP } from '@ionic-native/http/ngx';
 import { LoadingController } from '@ionic/angular';
 import { ApiServiceService } from 'src/app/services/api-service.service';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-view-students',
@@ -10,7 +11,7 @@ import { ApiServiceService } from 'src/app/services/api-service.service';
 })
 export class ViewStudentsPage implements OnInit {
   obj: any;
-  constructor(private http: HTTP, public loadingController: LoadingController, private api: ApiServiceService) {
+  constructor(private http: HTTP, public loadingController: LoadingController, private api: ApiServiceService,private storage:Storage) {
     this.getStudents();
   }
 
@@ -34,6 +35,7 @@ export class ViewStudentsPage implements OnInit {
 
   }
   ngOnInit() {
+  
   }
 
 }

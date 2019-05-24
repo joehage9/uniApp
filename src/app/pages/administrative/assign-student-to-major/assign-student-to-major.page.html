@@ -12,7 +12,7 @@
 <ion-content>
   <form>
     <ion-card>
-      <ion-select  class="form-control" [(ngModel)]="studentCourse.major" name="major" placeholder="Select Majors">
+      <ion-select  class="form-control" [(ngModel)]="majorStudent.major" name="major" placeholder="Select Majors">
         <!-- <ion-select-option>None</ion-select-option> -->
         <ion-select-option *ngFor="let s of majors" value="{{s.ID}}">{{s.name}} <span style="color:crimson">{{s.numberOfCredits}}</span></ion-select-option>
       </ion-select>

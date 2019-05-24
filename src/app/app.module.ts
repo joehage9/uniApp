@@ -22,7 +22,8 @@ import { AuthServiceService } from './services/auth-service.service';
     IonicModule.forRoot(),
     AppRoutingModule,
     IonicStorageModule.forRoot({
-      name:'exdb'
+      name: '__mydb',
+      driverOrder: ['indexeddb', 'sqlite', 'websql']
     })
   ],
   providers: [

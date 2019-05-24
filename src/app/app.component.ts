@@ -2,12 +2,12 @@ import { AuthServiceService } from './services/auth-service.service';
 import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
 import { Event } from '@angular/router';
+import { Storage } from '@ionic/storage';
 
 import { Platform, NavController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Router, NavigationEnd } from '@angular/router';
-import { NativeStorage } from '@ionic-native/native-storage/ngx';
 
 
 @Component({
@@ -25,9 +25,11 @@ export class AppComponent  implements OnInit{
     },
     {
       title:'Students',
+      role:['Students'],
       children:[
         {
           title: 'Add Student',
+          role:'Administratives',
           url: '/students/add',
           icon: 'person-add'
         },
@@ -40,9 +42,11 @@ export class AppComponent  implements OnInit{
     },
     {
       title:'Teachers',
+      role:['Teachers','Admin','Administratives'],
       children:[
         {
           title: 'Add Teacher',
+          role:'Administratives',
           url: '/teachers/add',
           icon: 'person-add'
         },
@@ -55,9 +59,11 @@ export class AppComponent  implements OnInit{
     },
     {
       title:'Admins',
+      role:['Admin','Administratives'],
       children:[
         {
           title: 'Add Admin',
+          role:'Administratives',
           url: '/admins/add',
           icon: 'person-add'
         },
@@ -70,6 +76,7 @@ export class AppComponent  implements OnInit{
     },
     {
       title:'Administratives',
+      role:['Administratives'],
       children:[
         {
           title: 'Add Administrative',
@@ -99,6 +106,7 @@ export class AppComponent  implements OnInit{
         {
           title: 'Add Course',
           url: '/courses/add',
+          role:'Administratives',
           icon: 'book'
         },
         {
@@ -113,6 +121,7 @@ export class AppComponent  implements OnInit{
       children:[
 {
       title: 'Add Major',
+      role:'Administratives',
       url: '/majors/add',
       icon: 'clipboard'
     },
@@ -128,6 +137,7 @@ export class AppComponent  implements OnInit{
       children:[
 {
       title: 'Add Semester',
+      role:'Administratives',
       url: '/semester/add',
       icon: 'clipboard'
     },
@@ -137,6 +147,12 @@ export class AppComponent  implements OnInit{
       icon: 'clipboard'
     }
       ]
+    },
+    {
+      title:'Grades',
+      role:'Student',
+      url:'/students/grades',
+      icon:'clipboard'
     }  
    
    
@@ -149,7 +165,7 @@ export class AppComponent  implements OnInit{
     private statusBar: StatusBar,
     private router:Router,
     private auth:AuthServiceService,
-    private storage:NativeStorage
+    private storage:Storage,
   ) {
     this.initializeApp();
   }
@@ -174,9 +190,10 @@ export class AppComponent  implements OnInit{
     this.router.events.subscribe((res) => { 
       this.currentUrl=this.router.url;
   });
-    this.storage.getItem("Role").then(data=>
+    this.storage.get("Role").then(data=>
       {
         this.role=data;
+        console.log(this.role);
       })
   }
 }

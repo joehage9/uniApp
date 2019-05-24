@@ -23,7 +23,7 @@ export class ApiServiceService {
   }
 
   addMajor(ss) {
-    return this.http.post(this.BASE_URL + 'MajorValues', ss, {});
+    return this.http.post(this.BASE_URL + 'MajorsValues', ss, {});
   }
 
   addStudent(ss) {
@@ -59,7 +59,7 @@ export class ApiServiceService {
   }
 
   assignStudentToMajor(ss){
-    return this.http.post(this.BASE_URL + 'MajorStudentsValues', ss, {});
+    return this.http.post(this.BASE_URL + 'MajorsStudentsValues', ss, {});
   }
 
   assignStudentToCourse(ss)
@@ -74,5 +74,10 @@ export class ApiServiceService {
   getSemesters()
   {
     return this.http.get(this.BASE_URL+'SemestersValues',{},{});
+  }
+
+  getStudentData(ss)
+  {
+    return this.http.post(this.BASE_URL+'GradesValues',ss,{});
   }
 }

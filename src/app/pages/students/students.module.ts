@@ -6,6 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { ViewStudentsPage } from './view-students/view-students.page';
 import { AddStudentPage } from './add-student/add-student.page';
+import { GradesComponent } from './grades/grades.component';
 
 
 const routes: Routes = [
@@ -16,6 +17,10 @@ const routes: Routes = [
   {
     path: 'add',
     component: AddStudentPage
+  },
+  {
+    path:'grades',
+    component:GradesComponent
   }
 ];
 
@@ -26,6 +31,6 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [ViewStudentsPage,AddStudentPage]
+  declarations: [ViewStudentsPage,AddStudentPage,GradesComponent]
 })
 export class StudentsModule { }

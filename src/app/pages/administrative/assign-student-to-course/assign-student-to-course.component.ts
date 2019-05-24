@@ -65,8 +65,7 @@ export class AssignStudentToCourseComponent implements OnInit {
 
     else { 
 
-      console.log(ss);
-      this.api.assignStudentToCourse(ss).then(data => {
+          this.api.assignStudentToCourse(ss).then(data => {
         this.clearInputs();
         loading.dismiss();
         alert("Studient Assigned To Course successfully.");
