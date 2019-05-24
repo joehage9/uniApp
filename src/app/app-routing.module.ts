@@ -5,7 +5,7 @@ import { AuthServiceService } from './services/auth-service.service';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'login',
     pathMatch: 'full',
   },
   

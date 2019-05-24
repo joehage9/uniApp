@@ -7,6 +7,7 @@ import { Platform, NavController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Router, NavigationEnd } from '@angular/router';
+import { NativeStorage } from '@ionic-native/native-storage/ngx';
 
 
 @Component({
@@ -15,6 +16,7 @@ import { Router, NavigationEnd } from '@angular/router';
 })
 export class AppComponent  implements OnInit{
   private currentUrl='';
+  private role;
   public appPages = [
     {
       title: 'Home',
@@ -146,7 +148,8 @@ export class AppComponent  implements OnInit{
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private router:Router,
-    private auth:AuthServiceService
+    private auth:AuthServiceService,
+    private storage:NativeStorage
   ) {
     this.initializeApp();
   }
@@ -171,5 +174,9 @@ export class AppComponent  implements OnInit{
     this.router.events.subscribe((res) => { 
       this.currentUrl=this.router.url;
   });
+    this.storage.getItem("Role").then(data=>
+      {
+        this.role=data;
+      })
   }
 }

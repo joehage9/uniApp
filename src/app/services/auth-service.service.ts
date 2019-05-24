@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HTTP } from '@ionic-native/http/ngx';
 import { Router } from '@angular/router';
-import { Storage } from '@ionic/storage';
+import { NativeStorage } from '@ionic-native/native-storage/ngx';
 
 
 @Injectable({
@@ -9,7 +9,7 @@ import { Storage } from '@ionic/storage';
 })
 export class AuthServiceService {
 
-  constructor(private http:HTTP,private storage: Storage,private router:Router) { }
+  constructor(private http:HTTP,private storage: NativeStorage,private router:Router) { }
   private BASE_URL='http://192.168.0.100:9100/api/';
 
   public role: string;
@@ -20,20 +20,20 @@ export class AuthServiceService {
 
 
   isLoggedIn(): boolean {
-    // this.storage.get('User').then(data=>{
-    //   if(data == null)
-    //   {
-    //     return false;
-    //   }
-    //   else
-    //   {
-    //     this.storage.get('Role').then(data=>{
-    //       this.role=data;
-    //     })
-    //     return true;
-    //   }
-    // })
-    return true ;
+    this.storage.getItem('User').then(data=>{
+      if(data == null)
+      {
+        return false;
+      }
+      else
+      {
+        this.storage.getItem('Role').then(data=>{
+          this.role=data;
+        });
+        return true;
+      }
+    })
+    return false ;
     
   }
 

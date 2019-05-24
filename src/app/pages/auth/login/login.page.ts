@@ -4,7 +4,7 @@ import { LoadingController, NavController } from '@ionic/angular';
 import { isNullOrUndefined } from 'util';
 import { Router } from '@angular/router';
 import { AuthServiceService } from 'src/app/services/auth-service.service';
-import { Storage } from '@ionic/storage';
+import { NativeStorage } from '@ionic-native/native-storage/ngx';
 
 
 @Component({
@@ -21,7 +21,7 @@ export class LoginPage implements OnInit {
       password: string
     }
 
-  constructor(private http: HTTP, public loadingController: LoadingController, private router: Router, private auth: AuthServiceService,private storage: Storage) {
+  constructor(private http: HTTP, public loadingController: LoadingController, private router: Router, private auth: AuthServiceService,private storage: NativeStorage) {
     this.clearInputs();
   }
 
@@ -60,8 +60,8 @@ export class LoginPage implements OnInit {
 
         if(this.response.Success==true)
         {
-          this.storage.set('Role',this.response.Role);
-          this.storage.set('User',this.response.message);
+          this.storage.setItem('Role',this.response.Role);
+          this.storage.setItem('User',this.response.message);
           this.goToNextPage();  
         }
         else

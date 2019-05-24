@@ -21,7 +21,9 @@ import { AuthServiceService } from './services/auth-service.service';
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot({
+      name:'exdb'
+    })
   ],
   providers: [
     StatusBar,
