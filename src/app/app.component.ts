@@ -3,12 +3,13 @@ import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
 import { Event } from '@angular/router';
 import { Storage } from '@ionic/storage';
+import { OneSignal } from '@ionic-native/onesignal/ngx';
+
 
 import { Platform, NavController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Router, NavigationEnd } from '@angular/router';
-
 
 @Component({
   selector: 'app-root',
@@ -166,6 +167,7 @@ export class AppComponent  implements OnInit{
     private router:Router,
     private auth:AuthServiceService,
     private storage:Storage,
+    private oneSignal:OneSignal
   ) {
     this.initializeApp();
   }
@@ -175,6 +177,19 @@ export class AppComponent  implements OnInit{
       this.statusBar.styleDefault();
       this.splashScreen.hide();
       this.statusBar.hide();
+      this.oneSignal.startInit('82bfdf49-4c84-4471-a990-e6bb47f00345', '1043933565731');
+
+      this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.InAppAlert);
+
+      this.oneSignal.handleNotificationReceived().subscribe(() => {
+      // do something when notification is received
+      });
+
+      this.oneSignal.handleNotificationOpened().subscribe(() => {
+        // do something when a notification is opened
+      });
+
+      this.oneSignal.endInit();
     });
   }
 

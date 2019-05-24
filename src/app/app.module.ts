@@ -13,6 +13,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { HTTP } from '@ionic-native/http/ngx';
 import { ApiServiceService } from './services/api-service.service';
 import { AuthServiceService } from './services/auth-service.service';
+import { OneSignal } from '@ionic-native/onesignal';
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -32,6 +34,7 @@ import { AuthServiceService } from './services/auth-service.service';
     HTTP,
     ApiServiceService,
     AuthServiceService,
+    OneSignal,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
